@@ -1,21 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Greeting Page</title>
-<style>
-body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;background:linear-gradient(135deg,#6a11cb,#2575fc);color:#fff;text-align:center}
-.greeting-card{background:rgba(0,0,0,0.4);padding:40px 60px;border-radius:20px;box-shadow:0 10px 30px rgba(0,0,0,0.5);backdrop-filter:blur(5px);transition:transform 0.3s ease}
-.greeting-card:hover{transform:scale(1.05)}
-h1{font-size:48px;margin-bottom:10px}
-p{font-size:20px;margin-top:0}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContextGraph: Lifelog Intelligence Framework</title>
+    <style>
+        /* --- Basic Setup --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6;
+            background-color: #fdfdfd;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #111;
+        }
+        .authors {
+            font-size: 1.15em;
+            margin-bottom: 10px;
+        }
+        .conference {
+            font-size: 1.2em;
+            font-weight: 500;
+            color: #0056b3; /* A strong blue */
+        }
+
+        /* --- Links --- */
+        .links {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .links a {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 12px 20px;
+            margin: 5px 10px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .links a:hover {
+            background-color: #0056b3;
+        }
+        .links a.code {
+            background-color: #28a745; /* Green for Code */
+        }
+        .links a.code:hover {
+            background-color: #218838;
+        }
+        .links a.disabled {
+            background-color: #aaa;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* --- Sections --- */
+        section {
+            margin-bottom: 40px;
+        }
+        h2 {
+            font-size: 2em;
+            font-weight: 500;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+            margin-top: 40px;
+        }
+        p, li {
+            font-size: 1.05em;
+        }
+        img.teaser, img.full-width {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        /* --- Results --- */
+        .results-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .results-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+        .results-list li:before {
+            content: '✅';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+        .results-list li strong {
+            color: #0056b3;
+        }
+
+        /* --- Citation --- */
+        pre {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: "Courier New", Courier, monospace;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
-<div class="greeting-card">
-<h1>Hello, Everyone!</h1>
-<p>Welcome to My Webpage.</p>
-</div>
-</body>
+
+    <div class="container">
+
+        <header>
+            <h1>ContextGraph: Lifelog Intelligence Framework for Contextual Subgraph Evolution</h1>
+            
+            <div class="authors">
+                [YOUR NAME HERE]<sup>1</sup>, Author 2<sup>2</sup>, Author 3<sup>1</sup>, Author 4<sup>2</sup>
+                <br><br>
+                <sup>1</sup>[Your University/Affiliation] &nbsp;&nbsp;&nbsp;&nbsp; <sup>2</sup>[Other Affiliation]
+            </div>
+
+            <div class="conference">
+                Accepted for Poster Presentation at [CONFERENCE NAME, e.g., AAAI 2025]
+            </div>
+        </header>
+
+        <section class="teaser">
+            <img src="images/framework.jpg" alt="ContextGraph Framework Overview" class="teaser">
+        </section>
+
+        <section class="links">
+            <a href="24692_ContextGraph_Lifelog_Int.pdf" target="_blank">Paper (PDF)</a>
+            <a href="supp_doc_results_ablation_params.pdf" target="_blank">Supplementary</a>
+            <a href="poster.pdf" target="_blank">Poster</a>
+            <a href="https://github.com/your-username/contextgraph" target="_blank" class="code">Code</a>
+            </section>
+
+        <section id="abstract">
+            <h2>Abstract</h2>
+            <p>
+                Lifelogging involves the continuous and comprehensive recording of a user's daily activities, behaviors, and interactions, offering valuable insights for personalized healthcare, event retrieval, and lifestyle analysis. However, extracting meaningful patterns from lifelog data requires models to capture deeper temporal contexts beyond simple retrieval. To address this, we introduce ContextGraph, a lifelog intelligence framework that models lifelogs as a Temporal Knowledge Graph (TKG) to reason about the user's evolving life patterns over time. ContextGraph computes Day Context Embeddings (DCE) to encode the temporal spread and social scene context of user's daily behavior. Then a novel Lens module extracts semantically meaningful subgraph snapshots around an anchor node in the TKG, representing specific personal contexts in the user's life. The Lens module also computes an evolution signature for each subgraph, indicating whether it is growing, decaying, or remaining static. By analyzing these evolution signatures, ContextGraph provides actionable insights into the user's lifelogs such as stable routines, behavioral drifts, or lifestyle changes.
+            </p>
+        </section>
+
+        <section id="method">
+            <h2>Our Approach: The ContextGraph Framework</h2>
+            <p>
+                We all generate massive amounts of personal data, but we are "data rich, insight poor." Current systems can't answer deep questions like, "Is my new fitness routine sticking?" or "How has my social life drifted since starting my new job?" ContextGraph is designed to solve this reasoning gap.
+            </p>
+            
+            <img src="images/motivation.jpg" alt="Motivation for ContextGraph" class="full-width">
+            
+            <p>
+                Our framework (shown in the teaser image) works in three key stages:
+            </p>
+            <ol>
+                <li><strong>Temporal Knowledge Graph (TKG) Construction:</strong> We first transform the chaotic, multimodal data from a user's device (locations, app usage, calls, etc.) into a structured, evolving Temporal Knowledge Graph. This connects disparate events into a coherent story.</li>
+                <li><strong>Day Context Embeddings (DCE):</strong> To understand the "vibe" of each day, we developed a novel deep learning model to create a unique fingerprint (an embedding) for every 24-hour period. This embedding captures both the **temporal rhythm** (e.g., a "workday" rhythm vs. a "weekend" rhythm) and the **social context** (e.g., who you interacted with, what apps you used).</li>
+                <li><strong>The Lens Module:</strong> This is our reasoning engine. It lets a user "zoom in" on a part of their life (e.g., "Fitness") by:
+                    <ul>
+                        <li><strong>Finding an Anchor:</strong> Identifying a key node like "Gym" in the TKG.</li>
+                        <li><strong>Extracting a Subgraph:</strong> Automatically pulling in the entire related ecosystem of behaviors (e.g., "healthy meals," "fitness app usage," "early sleep").</li>
+                        <li><strong>Computing an Evolution Signature:</strong> Analyzing this subgraph over time to tell the user if this part of their life is **Growing**, **Decaying**, or **Static**.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section id="results">
+            <h2>Key Results</h2>
+            <p>We rigorously tested ContextGraph on real-world and simulated data, with key findings presented in our supplementary document.</p>
+            
+            <ul class="results-list">
+                <li>
+                    <strong>Identifies Real-World Behavioral Shifts:</strong> In a real-world travel case study, ContextGraph successfully detected the decay of a user's "home" routine and the growth of a new "travel" routine, achieving a <strong>28% higher F1-score</strong> than the closest baseline method.
+                </li>
+                <li>
+                    <strong>Robust to Real-World Noise:</strong> Lifelog data is messy and sparse. We simulated this by removing up to 30% of the data. Our DCE module maintained high performance, achieving a <strong>0.88 ROC AUC</strong>, proving it's robust enough for real-world use.
+                </li>
+                <li>
+                    <strong>Accurate Subgraph Identification:</strong> The Lens module's ability to find the right behaviors is critical. Our anchor detection method outperformed four other baselines, achieving a <strong>Jaccard Score of 0.82</strong>.
+                </li>
+            </ul>
+        </section>
+
+        <section id="citation">
+            <h2>Citation (BibTeX)</h2>
+            <p>If you find our work useful in your research, please consider citing:</p>
+            <pre>
+@inproceedings{your-lastname-2025-contextgraph,
+    title     = {ContextGraph: Lifelog Intelligence Framework for Contextual Subgraph Evolution},
+    author    = {[YOUR NAME HERE] and Author 2, and Author 3, and Author 4},
+    booktitle = {Proceedings of the [Full Conference Name] ([Acronym] 2025)},
+    year      = {2025}
+}
+            </pre>
+        </section>
+
+    </div> </body>
 </html>
