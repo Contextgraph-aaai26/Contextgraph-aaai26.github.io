@@ -15,7 +15,7 @@
             padding: 0;
         }
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 20px auto;
             padding: 0 20px;
         }
@@ -37,10 +37,16 @@
             font-size: 1.15em;
             margin-bottom: 10px;
         }
+        .affiliation {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 5px;
+        }
         .conference {
             font-size: 1.2em;
             font-weight: 500;
             color: #0056b3; /* A strong blue */
+            margin-top: 15px;
         }
 
         /* --- Links --- */
@@ -69,15 +75,10 @@
         .links a.code:hover {
             background-color: #218838;
         }
-        .links a.disabled {
-            background-color: #aaa;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
 
         /* --- Sections --- */
         section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         h2 {
             font-size: 2em;
@@ -85,16 +86,42 @@
             border-bottom: 1px solid #ddd;
             padding-bottom: 8px;
             margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        h3 {
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-top: 30px;
+            color: #444;
         }
         p, li {
             font-size: 1.05em;
+            color: #444;
         }
-        img.teaser, img.full-width {
+        
+        /* --- Images --- */
+        figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        img.teaser {
             max-width: 100%;
             height: auto;
-            border: 1px solid #ccc;
             border-radius: 8px;
-            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        img.architecture {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        figcaption {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
         }
         
         /* --- Results --- */
@@ -140,61 +167,82 @@
             <h1>ContextGraph: Lifelog Intelligence Framework for Contextual Subgraph Evolution</h1>
             
             <div class="authors">
-                [YOUR NAME HERE]<sup>1</sup>, Author 2<sup>2</sup>, Author 3<sup>1</sup>, Author 4<sup>2</sup>
-                <br><br>
-                <sup>1</sup>[Your University/Affiliation] &nbsp;&nbsp;&nbsp;&nbsp; <sup>2</sup>[Other Affiliation]
+                Anil Sharma, Gunturi Venkata Sai Phani Kiran, Jayesh Rajkumar Vachhani, Sourabh Vasant Gothe, <br>
+                Ayon Chattopadhyay, Yashwant Saini, Parameswaranath Vadackupurath Mani, Barath Raj Kandur Raja
+            </div>
+            
+            <div class="affiliation">
+                Samsung R&D Institute India-Bangalore (SRI-B)
             </div>
 
             <div class="conference">
-                Accepted for Poster Presentation at [CONFERENCE NAME, e.g., AAAI 2025]
+                Accepted at AAAI 2026 (Main Technical Track)
             </div>
         </header>
 
         <section class="teaser">
-            <img src="images/framework.jpg" alt="ContextGraph Framework Overview" class="teaser">
+            <figure>
+                <img src="images/teaser.png" alt="ContextGraph Framework Overview: From Raw Logs to Insights" class="teaser">
+                <figcaption>
+                    Figure 1: ContextGraph transforms raw lifelogs into a Temporal Knowledge Graph (TKG) to enable applications like Routine Evolution tracking and New Interest Detection.
+                </figcaption>
+            </figure>
         </section>
 
         <section class="links">
-            <a href="24692_ContextGraph_Lifelog_Int.pdf" target="_blank">Paper (PDF)</a>
-            <a href="supp_doc_results_ablation_params.pdf" target="_blank">Supplementary</a>
+            <a href="ContextGraph_AAAI2026.pdf" target="_blank">Paper (PDF)</a>
+            <a href="ContextGraph_Supp.pdf" target="_blank">Supplementary</a>
             <a href="poster.pdf" target="_blank">Poster</a>
             <a href="https://github.com/your-username/contextgraph" target="_blank" class="code">Code</a>
-            </section>
+        </section>
 
         <section id="abstract">
             <h2>Abstract</h2>
             <p>
-                Lifelogging involves the continuous and comprehensive recording of a user's daily activities, behaviors, and interactions, offering valuable insights for personalized healthcare, event retrieval, and lifestyle analysis. However, extracting meaningful patterns from lifelog data requires models to capture deeper temporal contexts beyond simple retrieval. To address this, we introduce ContextGraph, a lifelog intelligence framework that models lifelogs as a Temporal Knowledge Graph (TKG) to reason about the user's evolving life patterns over time. ContextGraph computes Day Context Embeddings (DCE) to encode the temporal spread and social scene context of user's daily behavior. Then a novel Lens module extracts semantically meaningful subgraph snapshots around an anchor node in the TKG, representing specific personal contexts in the user's life. The Lens module also computes an evolution signature for each subgraph, indicating whether it is growing, decaying, or remaining static. By analyzing these evolution signatures, ContextGraph provides actionable insights into the user's lifelogs such as stable routines, behavioral drifts, or lifestyle changes.
+                Lifelogging involves the continuous and comprehensive recording of a user's daily activities, behaviors, and interactions, offering valuable insights for personalized healthcare, event retrieval, and lifestyle analysis. However, extracting meaningful patterns from lifelog data requires models to capture deeper temporal contexts beyond simple retrieval. To address this, we introduce <strong>ContextGraph</strong>, a lifelog intelligence framework that models lifelogs as a Temporal Knowledge Graph (TKG) to reason about the user's evolving life patterns over time. ContextGraph computes Day Context Embeddings (DCE) to encode the temporal spread and social scene context of a user's daily behavior. Then, a novel Lens module extracts semantically meaningful subgraph snapshots around an anchor node in the TKG, representing specific personal contexts. The Lens module computes an evolution signature for each subgraph, indicating whether it is growing, decaying, or remaining static. By analyzing these evolution signatures, ContextGraph provides actionable insights into the user's lifelogs such as stable routines, behavioral drifts, or lifestyle changes.
             </p>
         </section>
 
         <section id="method">
-            <h2>Our Approach: The ContextGraph Framework</h2>
+            <h2>Our Framework</h2>
             <p>
-                We all generate massive amounts of personal data, but we are "data rich, insight poor." Current systems can't answer deep questions like, "Is my new fitness routine sticking?" or "How has my social life drifted since starting my new job?" ContextGraph is designed to solve this reasoning gap.
+                ContextGraph transforms chaotic, multimodal data (locations, apps, calls) into actionable intelligence through a structured three-stage pipeline.
             </p>
-            
-            <img src="images/motivation.jpg" alt="Motivation for ContextGraph" class="full-width">
-            
+
+            <h3>1. From Raw Data to Temporal Knowledge Graph (TKG)</h3>
             <p>
-                Our framework (shown in the teaser image) works in three key stages:
+                The foundation of our framework is the automated mapping of raw lifelogs into a structured TKG. As illustrated in the left panel of <strong>Figure 1</strong> (above), we process heterogeneous data streams—including GPS coordinates, app usage logs, call records, and WiFi connections.
             </p>
-            <ol>
-                <li><strong>Temporal Knowledge Graph (TKG) Construction:</strong> We first transform the chaotic, multimodal data from a user's device (locations, app usage, calls, etc.) into a structured, evolving Temporal Knowledge Graph. This connects disparate events into a coherent story.</li>
-                <li><strong>Day Context Embeddings (DCE):</strong> To understand the "vibe" of each day, we developed a novel deep learning model to create a unique fingerprint (an embedding) for every 24-hour period. This embedding captures both the **temporal rhythm** (e.g., a "workday" rhythm vs. a "weekend" rhythm) and the **social context** (e.g., who you interacted with, what apps you used).</li>
-                <li><strong>The Lens Module:</strong> This is our reasoning engine. It lets a user "zoom in" on a part of their life (e.g., "Fitness") by:
-                    <ul>
-                        <li><strong>Finding an Anchor:</strong> Identifying a key node like "Gym" in the TKG.</li>
-                        <li><strong>Extracting a Subgraph:</strong> Automatically pulling in the entire related ecosystem of behaviors (e.g., "healthy meals," "fitness app usage," "early sleep").</li>
-                        <li><strong>Computing an Evolution Signature:</strong> Analyzing this subgraph over time to tell the user if this part of their life is **Growing**, **Decaying**, or **Static**.</li>
-                    </ul>
-                </li>
-            </ol>
+            <p>
+                Each raw event is mapped to an entity node (e.g., "Gym", "WhatsApp", "Mom") and connected via temporal edges that preserve the sequence and duration of interactions. This transformation converts a disjointed stream of logs into a rich, interconnected graph that explicitly represents the relationships between a user's activities, locations, and social interactions over time.
+            </p>
+
+            <h3>2. Day Context Embeddings (DCE)</h3>
+            <p>
+                To understand the "vibe" of each day, we developed a novel deep learning model to create a unique fingerprint (embedding) for every 24-hour period. As shown below, the DCE architecture encodes both the <strong>temporal rhythm</strong> (distribution of activities) and the <strong>social scene context</strong> (interactions and environment).
+            </p>
+            <figure>
+                <img src="images/dce_architecture.png" alt="Day Context Embedding (DCE) Architecture" class="architecture">
+                <figcaption>
+                    Figure 2: The DCE Architecture. It utilizes a Cyclic Encoder for temporal features and a Heterogeneous Graph Attention Network for scene context, fused via a Context-GVAE.
+                </figcaption>
+            </figure>
+
+            <h3>3. The Lens Module</h3>
+            <p>
+                This is our reasoning engine. While the TKG structures the data, the Lens Module allows us to "zoom in" on specific contexts (e.g., "Fitness" or "Work"). It identifies an <strong>Anchor Node</strong>, extracts the relevant <strong>Contextual Subgraph</strong>, and computes an <strong>Evolution Signature</strong> to classify the routine as <em>Growing</em>, <em>Decaying</em>, or <em>Static</em>.
+            </p>
+            <figure>
+                <img src="images/lens_module.png" alt="Lens Module Architecture and Mechanism" class="architecture">
+                <figcaption>
+                    Figure 3: The Lens Module mechanism for Anchor Selection, Subgraph Extraction, and Evolution Signature computation.
+                </figcaption>
+            </figure>
         </section>
 
         <section id="results">
             <h2>Key Results</h2>
-            <p>We rigorously tested ContextGraph on real-world and simulated data, with key findings presented in our supplementary document.</p>
+            <p>We rigorously tested ContextGraph on real-world and simulated data. Key highlights include:</p>
             
             <ul class="results-list">
                 <li>
@@ -213,11 +261,12 @@
             <h2>Citation (BibTeX)</h2>
             <p>If you find our work useful in your research, please consider citing:</p>
             <pre>
-@inproceedings{your-lastname-2025-contextgraph,
+@inproceedings{sharma2026contextgraph,
     title     = {ContextGraph: Lifelog Intelligence Framework for Contextual Subgraph Evolution},
-    author    = {[YOUR NAME HERE] and Author 2, and Author 3, and Author 4},
-    booktitle = {Proceedings of the [Full Conference Name] ([Acronym] 2025)},
-    year      = {2025}
+    author    = {Sharma, Anil and Kiran, Gunturi Venkata Sai Phani and Vachhani, Jayesh Rajkumar and Gothe, Sourabh Vasant and Chattopadhyay, Ayon and Saini, Yashwant and Mani, Parameswaranath Vadackupurath and Raja, Barath Raj Kandur},
+    booktitle = {Proceedings of the 40th AAAI Conference on Artificial Intelligence (AAAI)},
+    year      = {2026},
+    note      = {Main Technical Track}
 }
             </pre>
         </section>
